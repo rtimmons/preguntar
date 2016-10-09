@@ -10,3 +10,11 @@ cases:
 - given: study secondInf past
   question: You <small>(inf)</small> studyed # yup not 'ied' (yet)
   answer: estudiaste
+
+- given: bkfst thirdPlural future
+  question: They will breakfast
+  answer: desayunaran
+
+- given: bkfst firstPlural future
+  question: We will breakfast
+  answer: desayunaremos
