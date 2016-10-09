@@ -2,22 +2,21 @@ var verbs = {
   talk: {
     esp: 'hablar',
     root: 'habl',
-    type: 'regAr',
-    eng: 'talk',
-    engDid: 'talked',
+    type: 'regar',
+    // eng: 'talk',
+    // engDid: 'talked',
   },
   study: {
     esp: 'estudiar',
-    root: 'estudi',
-    type: 'regAr',
-    engDid: 'studied'
+    // engDid: 'studied'
   }
 };
 
 
 var verbTypes = {
-  regAr: {
+  regar: {
     first: 'o',
+    second: 'as'
   },
 };
 
@@ -36,18 +35,23 @@ var persons = {
   }
 };
 
+var lastTwo = /^(.*?)(..)$/g;
+
 function questionFor(verbKey, person, tense) {
   var verb = verbs[verbKey];
   var root = verb.root;
-  var typ = verbTypes[verb.type];
+
+
+  var typeKey = verb.type || verb.esp.replace(lastTwo,'reg$2')
+  var root = verb.root || verb.esp.replace(lastTwo,'$1');
+  var typ = verbTypes[typeKey];
   var suffix = typ[person];
 
   return root + suffix;
 }
-// questionFor('talk','first','present') => hablo
 
 $(() => {
-  var q = questionFor('talk','first','present');
+  var q = questionFor('study','second','present');
   $('body').append($('<div>').html(q + ''));
 });
 
