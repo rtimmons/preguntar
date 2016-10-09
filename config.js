@@ -63,8 +63,8 @@ var config = {
 
   tenses: {
     present:  {},
-    past:     { eng: v => `${v.engVerb}ed`    },
-    future:   { eng: v => `will ${v.engVerb}`, esp: c => c.esp },
+    past:     { eng: v => `${v}ed`    },
+    future:   { eng: v => `will ${v}`, esp: c => c.esp },
   },
 
   types: {

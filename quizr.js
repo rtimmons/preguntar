@@ -18,13 +18,11 @@ function questionAndAnswerFor(verbKey, person, tense) {
   type.forEach(t => { tenses = _.defaults(tenses, config.types[t]) });
   var espSuffix = tenses[tense][person];
 
-  var rootCtx = _.defaults(_.clone(verb), {
-    engVerb: engVerb,
-  });
-  var engConjugation = (config.tenses[tense].eng || (ctx => ctx.engVerb))(rootCtx);
+  var engConjugation =
+    (config.tenses[tense].eng || (x => x))(engVerb);
   var espRoot =
     verb.stems && verb.stems[tense] ||
-    config.tenses[tense].esp && config.tenses[tense].esp(rootCtx) ||
+    config.tenses[tense].esp && config.tenses[tense].esp(verb) ||
     verb.esp.replace(EXTRACT_ROOT,'$1');
 
   return {
