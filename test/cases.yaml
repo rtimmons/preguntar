@@ -39,4 +39,10 @@ cases:
   question: They wanted
   answer: quisieron
 
+- given: have first past
+  question: I haveed
+  answer: tuve
 
+- given: have first present
+  question: I have
+  answer: tengo

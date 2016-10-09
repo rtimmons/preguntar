@@ -28,9 +28,19 @@ var config = {
       type: ['irregFuture', 'irregPast', 'reger'],
       stems: {
         future: 'querr',
-        past:   'quis'
+        past:   'quis',
       },
     },
+    have: {
+      esp: 'tener',
+      type: ['irregFuture', 'irregPast', 'reger'],
+      stems: {
+        // TODO: is this right?
+        present: 'teng',
+        future: 'tendr',
+        past:   'tuv',
+      },
+    }
   },
 
   persons: {
