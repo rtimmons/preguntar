@@ -59,13 +59,7 @@ function choose() {
   var person = rand(_.keys(config.persons));
   var tense  = rand(_.keys(config.tenses));
 
-  var q = questionFor(verb,person,tense);
-  var a = answerFor(verb,person,tense);
-
-  return {
-    question: q,
-    answer:   a,
-  };
+  return questionAndAnswerFor(verb, person, tense);
 }
 
 if (typeof module === 'object') {
