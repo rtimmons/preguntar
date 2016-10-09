@@ -81,15 +81,35 @@ function answerFor(verbKey, person, tense) {
 }
 
 
-
-$(() => {
+function choose() {
   var verb   = rand(_.keys(config.verbs));
   var person = rand(_.keys(config.persons));
   var tense  = rand(_.keys(config.tenses));
 
   var q = questionFor(verb,person,tense);
   var a = answerFor(verb,person,tense);
-  $('#quizr').html(q + '=> ' + a);
+
+  return {
+    question: q,
+    answer:   a,
+  };
+}
+
+var ANSWER_DELAY   = 4000;
+var CHANGE_Q_DELAY = 5500;
+
+function updateUI(choice) {
+  $('#question').html(choice.question);
+  $('#answer').html('');
+  setTimeout( () => $('#answer').html(choice.answer), ANSWER_DELAY);
+}
+
+$(() => {
+  updateUI(choose());
+  setTimeout(() => 
+    setInterval(() => updateUI(choose()), CHANGE_Q_DELAY),
+    CHANGE_Q_DELAY
+  );
 });
 
 var rand = function(array) {

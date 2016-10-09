@@ -5,19 +5,23 @@
 <head>
   <title></title>
   <style type="text/css">
-  body, #quizr {
+  body, #question, #answer {
       text-align: center;
       vertical-align: middle;
       margin: 0;
       padding: 0;
-      height: 100%;
       width: 100%;
 
   }
-  #quizr {
+  #question, #answer {
       font-size: 3em;
       background-color: #efefef;
       margin: 0 auto;
+  }
+
+  #answer {
+     font-size: 2em;
+     margin-top: 1em;
   }
   </style>
   <script type="text/javascript" src="./jquery.js"></script>
@@ -26,7 +30,8 @@
 </head>
 <body>
 
-<div id="quizr"></div>
+<div id="question"></div>
+<div id="answer"></div>
 
 </body>
 </html>
