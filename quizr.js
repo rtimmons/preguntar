@@ -1,13 +1,20 @@
 var config = {
+
   verbs: {
-    talk: {
-      esp: 'hablar',
-    },
-    study: {
-      esp: 'estudiar',
-    },
+    talk:  { esp: 'hablar',   },
+    study: { esp: 'estudiar', },
   },
 
+  persons: {
+    first:      { esp: '',        eng: 'I',              },
+    secondInf:  { esp: 'tú',      eng: 'You (friendly)', },
+    third:      { esp: 'él/ella', eng: 'He/she',         },
+  },
+
+  tenses: {
+    present: {},
+  },
+ 
   types: {
     regar: {
       present: {
@@ -17,22 +24,10 @@ var config = {
       },
     },
   },
-
-  persons: {
-    first: {
-      esp: '',
-      eng: 'I',
-    },
-    secondInf: {
-      esp: 'tú',
-      eng: 'You (friendly)',
-    },
-    third: {
-      esp: 'él/ella',
-      eng: 'He/she',
-    },
-  },
 };
+
+
+
 
 var EXTRACT_ROOT = /^(.*?)(..)$/g;
 
@@ -51,8 +46,12 @@ function questionFor(verbKey, person, tense) {
 }
 
 $(() => {
-  var q = questionFor('talk','secondInf','present');
-  $('body').append($('<div>').html(q + ''));
+  var verb   = rand(_.keys(config.verbs));
+  var person = rand(_.keys(config.persons));
+  var tense  = rand(_.keys(config.tenses));
+
+  var q = questionFor(verb,person,tense);
+  $('#quizr').html(q + '');
 });
 
 var rand = function(array) {
