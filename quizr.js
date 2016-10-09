@@ -12,15 +12,27 @@ var config = {
   },
 
   tenses: {
-    present: {},
+    present:  {},
+    past:     { eng: v => `${v.engVerb}ed`    },
+    future:   { eng: v => `will ${v.engVerb}`, esp: c => c.esp },
   },
- 
+
   types: {
     regar: {
       present: {
         first: 'o',
         secondInf: 'as',
         third: 'a',
+      },
+      past: {
+        first: 'é',
+        secondInf: 'aste',
+        third: 'ó',
+      },
+      future: {
+        first: 'é',
+        secondInf: 'ás',
+        third: 'á',
       },
     },
   },
@@ -35,9 +47,14 @@ function questionFor(verbKey, person, tense) {
   var verb = config.verbs[verbKey];
 
   var engVerb = verb.eng || verbKey;
+  var rootCtx = _.defaults(verb, {
+    engVerb: engVerb,
+  });
+  var tensed = (config.tenses[tense].eng || (ctx => ctx.engVerb))(rootCtx);
+
   var engPerson = config.persons[person].eng;
 
-  return engPerson + ' ' + engVerb;
+  return engPerson + ' ' + tensed;
 }
 
 function answerFor(verbKey, person, tense) {
@@ -46,10 +63,19 @@ function answerFor(verbKey, person, tense) {
   // e.g. 'regar' for regular ar verbs
   var typeKey = verb.type || verb.esp.replace(EXTRACT_ROOT,'reg$2')
   // hablar => habl
-  var root    = verb.root || verb.esp.replace(EXTRACT_ROOT,'$1');
+  var stem    = verb.stem || verb.esp.replace(EXTRACT_ROOT,'$1');
 
   var typ = config.types[typeKey];
+
+  if (!typ[tense]) {
+    return `${typeKey} ${tense} not configured`;
+  }
   
+  var rootCtx = _.defaults(verb, {
+    stem: stem,
+  });
+  var root = (config.tenses[tense].esp || (ctx => ctx.stem))(rootCtx);
+
   var suffix = typ[tense][person];
   return root + suffix;
 }
