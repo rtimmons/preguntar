@@ -9,17 +9,16 @@ var EXTRACT_ROOT = /^(.*?)(..)$/g;
 function questionAndAnswerFor(verbKey, person, tense) {
   var verb = config.verbs[verbKey];
 
-  var engVerb = verb.eng || verbKey;
-
-  // regular ar -> 'regar' 
-  var type = verb.type || [verb.esp.replace(EXTRACT_ROOT,'reg$2')]
-
-  var tenses = {};
-  type.forEach(t => { tenses = _.defaults(tenses, config.types[t]) });
-  var espSuffix = tenses[tense][person];
-
   var engConjugation =
-    (config.tenses[tense].eng || (x => x))(engVerb);
+    (config.tenses[tense].eng || (x => x))(verb.eng || verbKey);
+
+  var type = _.find(_.collect(
+    verb.type || [verb.esp.replace(EXTRACT_ROOT,'reg$2')], 
+    t => config.types[t]
+  ), typ => typ[tense]);
+
+  var espSuffix = type[tense][person];
+
   var espRoot =
     verb.stems && verb.stems[tense] ||
     config.tenses[tense].esp && config.tenses[tense].esp(verb) ||
