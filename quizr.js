@@ -16,6 +16,12 @@ var config = {
     wash:     { esp: 'lavar',     },
     ask:      { esp: 'preguntar', },
     call:     { esp: 'llamar',    },
+
+    // reg ir
+    live:   { esp: 'vivir' },
+
+    // reg er
+    eat:      { esp: 'comer' },
   },
 
   persons: {
@@ -48,7 +54,7 @@ var config = {
         secondInf: 'aste',
         third: 'ó',
         firstPlural: 'amos',
-        secondForm: 'areis',
+        secondForm: 'asteis',
         thirdPlural: 'aron',
       },
       future: {
@@ -60,6 +66,61 @@ var config = {
         thirdPlural: 'an',
       },
     },
+
+    regir: {
+      present: {
+        first: 'o',
+        secondInf: 'es',
+        third: 'e',
+        firstPlural: 'imos',
+        secondForm: 'is',
+        thirdPlural: 'en',
+      },
+      past: {
+        first: 'í',
+        secondInf: 'iste',
+        third: 'ió',
+        firstPlural: 'imos',
+        secondForm: 'isteis',
+        thirdPlural: 'ieron',
+      },
+      future: {
+        first: 'é',
+        secondInf: 'ás',
+        third: 'á',
+        firstPlural: 'emos',
+        secondForm: 'eis',
+        thirdPlural: 'an',
+      },
+    },
+
+    reger: {
+      present: {
+        first: 'o',
+        secondInf: 'es',
+        third: 'e',
+        firstPlural: 'emos',
+        secondForm: 'éis',
+        thirdPlural: 'en',
+      },
+      past: {
+        first: 'í',
+        secondInf: 'iste',
+        third: 'ió',
+        firstPlural: 'emos',
+        secondForm: 'esteis',
+        thirdPlural: 'ieron',
+      },
+      future: {
+        first: 'é',
+        secondInf: 'ás',
+        third: 'á',
+        firstPlural: 'emos',
+        secondForm: 'eis',
+        thirdPlural: 'an',
+      },
+    },
+
   },
 };
 
@@ -92,7 +153,7 @@ function answerFor(verbKey, person, tense) {
 
   var typ = config.types[typeKey];
 
-  if (!typ[tense]) {
+  if (!typ || !typ[tense]) {
     return `${typeKey} ${tense} not configured`;
   }
   
