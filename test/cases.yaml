@@ -31,3 +31,12 @@ cases:
   question: I want
   answer: quero
 
+- given: want first past
+  question: I wanted
+  answer: quise
+
+- given: want thirdPlural past
+  question: They wanted
+  answer: quisieron
+
+

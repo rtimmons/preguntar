@@ -25,9 +25,10 @@ var config = {
     // irreg past
     want: {
       esp: 'querer',
-      type: ['irregFuture', 'reger'],
+      type: ['irregFuture', 'irregPast', 'reger'],
       stems: {
         future: 'querr',
+        past:   'quis'
       },
     },
   },
@@ -57,6 +58,17 @@ var config = {
         firstPlural: 'emos',
         secondForm: 'éis',
         thirdPlural: 'an',
+      }
+    },
+
+    irregPast: {
+      past: {
+        first: 'e',
+        secondInf: 'iste',
+        third: 'o',
+        firstPlural: 'imos',
+        secondForm: 'isteis',
+        thirdPlural: 'ieron',
       }
     },
 
