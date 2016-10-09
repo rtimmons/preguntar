@@ -18,3 +18,7 @@ cases:
 - given: bkfst firstPlural future
   question: We will breakfast
   answer: desayunaremos
+
+- given: bkfst thirdPlural past
+  question: They breakfasted
+  answer: desayunaron
