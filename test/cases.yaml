@@ -4,11 +4,11 @@ cases:
   answer:   hablo
 
 - given:    walk first past
-  question: I walked
+  question: I walk'd
   answer:   caminé
 
 - given: study secondInf past
-  question: You <small>(inf)</small> studyed # yup not 'ied' (yet)
+  question: You (inf) study'd # yup not 'ied' (yet)
   answer: estudiaste
 
 - given: bkfst thirdPlural future
@@ -20,7 +20,7 @@ cases:
   answer: desayunaremos
 
 - given: bkfst thirdPlural past
-  question: They breakfasted
+  question: They breakfast'd
   answer: desayunaron
 
 - given: want first future
@@ -32,15 +32,15 @@ cases:
   answer: quero
 
 - given: want first past
-  question: I wanted
+  question: I want'd
   answer: quise
 
 - given: want thirdPlural past
-  question: They wanted
+  question: They want'd
   answer: quisieron
 
 - given: have first past
-  question: I haveed
+  question: I have'd
   answer: tuve
 
 - given: have first present
@@ -48,11 +48,11 @@ cases:
   answer: tengo
 
 - given: ask third past
-  question: He/she asked
+  question: He/she ask'd
   answer: preguntó
 
 - given: respond third past
-  question: He/she responded
+  question: He/she respond'd
   answer: respondió
 
 - given: know first present
@@ -60,6 +60,6 @@ cases:
   answer: sabo
 
 - given: know first past
-  question: I knowed
+  question: I know'd
   answer: supe
 

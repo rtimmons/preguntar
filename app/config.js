@@ -54,16 +54,16 @@ var config = {
 
   persons: {
     first:      { esp: 'yo',      eng: 'I',              },
-    secondInf:  { esp: 'tú',      eng: 'You <small>(inf)</small>', },
+    secondInf:  { esp: 'tú',      eng: 'You <em>(inf)</em>', },
     third:      { esp: 'él/ella', eng: 'He/she',         },
     firstPlural:{ esp: 'nosotros',eng: 'We'              },
-    secondForm: { esp: 'vosotros',eng: 'You <small>(pl)</small>', },
+    secondForm: { esp: 'vosotros',eng: 'You <em>(pl)</em>', },
     thirdPlural:{ esp: 'ellos',   eng: 'They'            },
   },
 
   tenses: {
     present:  {},
-    past:     { eng: v => `${v}ed`    },
+    past:     { eng: v => `${v}<em>'d</em>`    },
     future:   { eng: v => `will ${v}`, esp: c => c.esp },
   },
 
