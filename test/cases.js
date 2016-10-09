@@ -6,21 +6,13 @@ var yaml = require('js-yaml');
 var fs = require('fs');
 var _ = require('underscore');
 
-describe('ok', function () {
+var quizr = require('../quizr.js');
 
-  before(function () {
-  });
-
-  after(function () {
-  });
-
-  // like `@Before`
-  beforeEach(() => {
-  });
-  afterEach(() => {
-  });
-
+describe('conjugation',() => {
   it('passes', () => {
-    expect(3).to.equal(3);
+    expect(quizr.questionAndAnswerFor('talk', 'first', 'present')).to.deep.equal({
+      question: 'I talk',
+      answer:   'hablo'
+    });
   });
 });

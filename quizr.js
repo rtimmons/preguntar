@@ -1,3 +1,7 @@
+if (typeof require === 'function') {
+  var _ = require('underscore');
+}
+
 var config = {
 
   verbs: {
@@ -167,6 +171,16 @@ function answerFor(verbKey, person, tense) {
 }
 
 
+function questionAndAnswerFor(verbKey, person, tense) {
+  var q = questionFor(verbKey,person,tense);
+  var a = answerFor(verbKey,person,tense);
+
+  return {
+    question: q,
+    answer:   a,
+  };
+}
+
 function choose() {
   var verb   = rand(_.keys(config.verbs));
   var person = rand(_.keys(config.persons));
@@ -186,3 +200,13 @@ var rand = function(array) {
   var out = array[r];
   return out;
 };
+
+if (typeof module === 'object') {
+  module.exports = {
+    choose: choose,
+    rand: rand,
+    questionFor: questionFor,
+    answerFor: answerFor,
+    questionAndAnswerFor: questionAndAnswerFor,
+  };
+}
