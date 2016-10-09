@@ -31,7 +31,7 @@ var config = {
 
 var EXTRACT_ROOT = /^(.*?)(..)$/g;
 
-function questionFor(verbKey, person, tense) {
+function answerFor(verbKey, person, tense) {
   var verb = config.verbs[verbKey];
 
   // e.g. 'regar' for regular ar verbs
@@ -45,12 +45,14 @@ function questionFor(verbKey, person, tense) {
   return root + suffix;
 }
 
+
+
 $(() => {
   var verb   = rand(_.keys(config.verbs));
   var person = rand(_.keys(config.persons));
   var tense  = rand(_.keys(config.tenses));
 
-  var q = questionFor(verb,person,tense);
+  var q = answerFor(verb,person,tense);
   $('#quizr').html(q + '');
 });
 
