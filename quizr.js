@@ -14,23 +14,18 @@ function questionAndAnswerFor(verbKey, person, tense) {
   // regular ar -> 'regar' 
   var type = verb.type || [verb.esp.replace(EXTRACT_ROOT,'reg$2')]
 
-  // hablar => habl
-  var espStem = verb.stems && verb.stems[tense] ? verb.stems[tense] 
-    : verb.esp.replace(EXTRACT_ROOT,'$1')
-
   var tenses = {};
   type.forEach(t => { tenses = _.defaults(tenses, config.types[t]) });
   var espSuffix = tenses[tense][person];
 
   var rootCtx = _.defaults(_.clone(verb), {
     engVerb: engVerb,
-    espStem: espStem,
   });
   var engConjugation = (config.tenses[tense].eng || (ctx => ctx.engVerb))(rootCtx);
-  var espRoot = (
-    // TODO: this is so gross
-    verb.stems && verb.stems[tense] && verb.stems[tense] && (c => espStem) ||
-    config.tenses[tense].esp || (ctx => ctx.espStem))(rootCtx);
+  var espRoot =
+    verb.stems && verb.stems[tense] ||
+    config.tenses[tense].esp && config.tenses[tense].esp(rootCtx) ||
+    verb.esp.replace(EXTRACT_ROOT,'$1');
 
   return {
     question: config.persons[person].eng + ' ' + engConjugation,
