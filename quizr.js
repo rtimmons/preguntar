@@ -1,22 +1,19 @@
 var verbs = {
   talk: {
-    esp: 'hablar',
-    root: 'habl',
-    type: 'regar',
-    // eng: 'talk',
-    // engDid: 'talked',
+    esp: 'hablar'
   },
   study: {
     esp: 'estudiar',
-    // engDid: 'studied'
-  }
+  },
 };
-
 
 var verbTypes = {
   regar: {
-    first: 'o',
-    second: 'as'
+    present: {
+      first: 'o',
+      secondInf: 'as',
+      third: 'a'
+    },
   },
 };
 
@@ -35,23 +32,24 @@ var persons = {
   }
 };
 
-var lastTwo = /^(.*?)(..)$/g;
+var EXTRACT_ROOT = /^(.*?)(..)$/g;
 
 function questionFor(verbKey, person, tense) {
   var verb = verbs[verbKey];
-  var root = verb.root;
 
+  // e.g. 'regar' for regular ar verbs
+  var typeKey = verb.type || verb.esp.replace(EXTRACT_ROOT,'reg$2')
+  // hablar => habl
+  var root    = verb.root || verb.esp.replace(EXTRACT_ROOT,'$1');
 
-  var typeKey = verb.type || verb.esp.replace(lastTwo,'reg$2')
-  var root = verb.root || verb.esp.replace(lastTwo,'$1');
   var typ = verbTypes[typeKey];
-  var suffix = typ[person];
-
+  
+  var suffix = typ[tense][person];
   return root + suffix;
 }
 
 $(() => {
-  var q = questionFor('study','second','present');
+  var q = questionFor('talk','secondInf','present');
   $('body').append($('<div>').html(q + ''));
 });
 
@@ -82,7 +80,6 @@ var dimensions = [
 var rand = function(array) {
   var r = Math.round(Math.random() * (array.length-1));
   var out = array[r];
-  // console.log(`out[${array}, len=${array.length} r=${r}] = ${out}`);
   return out;
 };
 
