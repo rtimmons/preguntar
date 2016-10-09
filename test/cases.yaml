@@ -2,6 +2,11 @@ cases:
 - given:    talk first present
   question: I talk
   answer:   hablo
+
 - given:    walk first past
   question: I walked
   answer:   caminé
+
+- given: study secondInf past
+  question: You <small>(inf)</small> studyed # yup not 'ied' (yet)
+  answer: estudiaste
