@@ -30,21 +30,48 @@
   <script type="text/javascript" src="../app/quizr.js"></script>
   <script type="text/javascript" src="../app/config.js"></script>
   <script type="text/javascript">
-  var ANSWER_DELAY   = 4000;
-  var CHANGE_Q_DELAY = 5500;
 
-  function updateUI(choice) {
-    $('#question').html(choice.question);
-    $('#answer').html('');
-    setTimeout( () => $('#answer').html(choice.answer), ANSWER_DELAY);
+  const UNANSWERED = 1;
+  const ANSWERED   = 2;
+
+  class App {
+    constructor($q, $a) {
+      this.$q = $q;
+      this.$a = $a;
+
+      this.generateChoice();
+    }
+
+    generateChoice() {
+      var choice = randomChoice();
+      var qa = questionAndAnswerFor(choice.verb, choice.person, choice.tense);
+      this.qa = qa;
+
+      this.$q.html(this.qa.question);
+      this.$a.html('');
+      this.state = UNANSWERED;
+    }
+
+    answer() {
+      this.$a.html(this.qa.answer);
+      this.state = ANSWERED;
+    }
+
+    onKeyUp() {
+      if (this.state === UNANSWERED) {
+        this.answer();
+        return;
+      }
+      this.generateChoice();
+    }
   }
 
   $(() => {
-    updateUI(choose());
-    setTimeout(() => 
-      setInterval(() => updateUI(choose()), CHANGE_Q_DELAY),
-      CHANGE_Q_DELAY
-    );
+      var app = new App($('#question'), $('#answer'));
+      $('body').on('keyup',() => {
+          app.onKeyUp();
+          return true;
+      });
   });
   </script>
 </head>

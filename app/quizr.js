@@ -34,17 +34,19 @@ function questionAndAnswerFor(verbKey, person, tense) {
   };
 }
 
-function choose() {
+function randomChoice() {
   var verb   = rand(_.keys(config.verbs));
   var person = rand(_.keys(config.persons));
   var tense  = rand(_.keys(config.tenses));
 
-  return questionAndAnswerFor(verb, person, tense);
+  return {
+    verb: verb, person: person, tense: tense
+  };
 }
 
 if (typeof module === 'object') {
   module.exports = {
-    choose: choose,
+    randomChoice: randomChoice,
     questionAndAnswerFor: questionAndAnswerFor,
   };
 }
