@@ -23,18 +23,18 @@ function questionAndAnswerFor(verbKey, person, tense) {
   }
 
   // hablar => habl
-  var stem = verb.stem || verb.esp.replace(EXTRACT_ROOT,'$1');
+  var espStem = verb.stem || verb.esp.replace(EXTRACT_ROOT,'$1');
 
   var rootCtx = _.defaults(verb, {
     engVerb: engVerb,
-    stem: stem,
+    espStem: espStem,
   });
   var engConjugation = (config.tenses[tense].eng || (ctx => ctx.engVerb))(rootCtx);
-  var root = (config.tenses[tense].esp || (ctx => ctx.stem))(rootCtx);
+  var espRoot = (config.tenses[tense].esp || (ctx => ctx.espStem))(rootCtx);
 
   return {
     question: engPerson + ' ' + engConjugation,
-    answer:   root + espSuffix,
+    answer:   espRoot + espSuffix,
   };
 }
 
