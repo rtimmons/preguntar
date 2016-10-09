@@ -181,23 +181,6 @@ function choose() {
   };
 }
 
-var ANSWER_DELAY   = 4000;
-var CHANGE_Q_DELAY = 5500;
-
-function updateUI(choice) {
-  $('#question').html(choice.question);
-  $('#answer').html('');
-  setTimeout( () => $('#answer').html(choice.answer), ANSWER_DELAY);
-}
-
-$(() => {
-  updateUI(choose());
-  setTimeout(() => 
-    setInterval(() => updateUI(choose()), CHANGE_Q_DELAY),
-    CHANGE_Q_DELAY
-  );
-});
-
 var rand = function(array) {
   var r = Math.round(Math.random() * (array.length-1));
   var out = array[r];
