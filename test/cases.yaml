@@ -55,4 +55,11 @@ cases:
   question: He/she responded
   answer: respondió
 
+- given: know first present
+  question: I know
+  answer: sabo
+
+- given: know first past
+  question: I knowed
+  answer: supe
 

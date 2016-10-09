@@ -32,6 +32,14 @@ var config = {
         past:   'quis',
       },
     },
+    know: {
+      esp: 'saber',
+      type: ['irregFuture', 'irregPast', 'reger'],
+      stems: {
+        future: 'sabr',
+        past:   'sup',
+      },
+    },
     have: {
       esp: 'tener',
       type: ['irregFuture', 'irregPast', 'reger'],
