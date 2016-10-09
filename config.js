@@ -21,6 +21,15 @@ var config = {
 
     // reg er
     eat:      { esp: 'comer' },
+
+    // irreg past
+    want: {
+      esp: 'querer',
+      type: ['irregFuture', 'reger'],
+      stems: {
+        future: 'querr',
+      },
+    },
   },
 
   persons: {
@@ -39,6 +48,18 @@ var config = {
   },
 
   types: {
+
+    irregFuture: {
+      future: {
+        first: 'é',
+        secondInf: 'ás',
+        third: 'á',
+        firstPlural: 'emos',
+        secondForm: 'éis',
+        thirdPlural: 'an',
+      }
+    },
+
     regar: {
       present: {
         first: 'o',

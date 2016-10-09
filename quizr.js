@@ -10,30 +10,30 @@ function questionAndAnswerFor(verbKey, person, tense) {
   var verb = config.verbs[verbKey];
 
   var engVerb = verb.eng || verbKey;
-  var engPerson = config.persons[person].eng;
 
-  // e.g. 'regar' for regular ar verbs
-  var typeKey = verb.type || verb.esp.replace(EXTRACT_ROOT,'reg$2')
-
-  var typ = config.types[typeKey];
-  var espSuffix = typ[tense][person];
-
-  if (!typ || !typ[tense]) {
-    return `${typeKey} ${tense} not configured`;
-  }
+  // regular ar -> 'regar' 
+  var type = verb.type || [verb.esp.replace(EXTRACT_ROOT,'reg$2')]
 
   // hablar => habl
-  var espStem = verb.stem || verb.esp.replace(EXTRACT_ROOT,'$1');
+  var espStem = verb.stems && verb.stems[tense] ? verb.stems[tense] 
+    : verb.esp.replace(EXTRACT_ROOT,'$1')
 
-  var rootCtx = _.defaults(verb, {
+  var tenses = {};
+  type.forEach(t => { tenses = _.defaults(tenses, config.types[t]) });
+  var espSuffix = tenses[tense][person];
+
+  var rootCtx = _.defaults(_.clone(verb), {
     engVerb: engVerb,
     espStem: espStem,
   });
   var engConjugation = (config.tenses[tense].eng || (ctx => ctx.engVerb))(rootCtx);
-  var espRoot = (config.tenses[tense].esp || (ctx => ctx.espStem))(rootCtx);
+  var espRoot = (
+    // TODO: this is so gross
+    verb.stems && verb.stems[tense] && verb.stems[tense] && (c => espStem) ||
+    config.tenses[tense].esp || (ctx => ctx.espStem))(rootCtx);
 
   return {
-    question: engPerson + ' ' + engConjugation,
+    question: config.persons[person].eng + ' ' + engConjugation,
     answer:   espRoot + espSuffix,
   };
 }

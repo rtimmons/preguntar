@@ -22,3 +22,12 @@ cases:
 - given: bkfst thirdPlural past
   question: They breakfasted
   answer: desayunaron
+
+- given: want first future
+  question: I will want
+  answer: querré
+
+- given: want first present
+  question: I want
+  answer: quero
+
