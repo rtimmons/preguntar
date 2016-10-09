@@ -1,0 +1,7 @@
+cases:
+- given:    talk first present
+  question: I talk
+  answer:   hablo
+- given:    walk first past
+  question: I walked
+  answer:   caminé
