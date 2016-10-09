@@ -58,7 +58,8 @@
       this.state = ANSWERED;
     }
 
-    onKeyUp() {
+    // keycode unused now - but better keyboard nav would be nice
+    onKeyUp(keycode) {
       if (this.state === UNANSWERED) {
         this.answer();
         return;
@@ -69,8 +70,8 @@
 
   $(() => {
       var app = new App($('#question'), $('#answer'));
-      $('body').on('keyup',() => {
-          app.onKeyUp();
+      $('body').on('keyup',(e) => {
+          app.onKeyUp(e.which);
           return true;
       });
   });
