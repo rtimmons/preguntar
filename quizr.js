@@ -10,6 +10,8 @@ var config = {
     secondInf:  { esp: 'tú',      eng: 'You <small>(inf)</small>', },
     third:      { esp: 'él/ella', eng: 'He/she',         },
     firstPlural:{ esp: 'nosotros',eng: 'We'              },
+    secondForm: { esp: 'vosotros',eng: 'You <small>(pl)</small>', },
+    thirdPlural:{ esp: 'ellos',   eng: 'They'            },
   },
 
   tenses: {
@@ -25,18 +27,24 @@ var config = {
         secondInf: 'as',
         third: 'a',
         firstPlural: 'amos',
+        secondForm: 'áis',
+        thirdPlural: 'an',
       },
       past: {
         first: 'é',
         secondInf: 'aste',
         third: 'ó',
         firstPlural: 'amos',
+        secondForm: 'areis',
+        thirdPlural: 'aron',
       },
       future: {
         first: 'é',
         secondInf: 'ás',
         third: 'á',
         firstPlural: 'emos',
+        secondForm: 'eis',
+        thirdPlural: 'an',
       },
     },
   },
