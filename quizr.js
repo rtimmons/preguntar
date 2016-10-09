@@ -7,8 +7,9 @@ var config = {
 
   persons: {
     first:      { esp: '',        eng: 'I',              },
-    secondInf:  { esp: 'tú',      eng: 'You (friendly)', },
+    secondInf:  { esp: 'tú',      eng: 'You <small>(inf)</small>', },
     third:      { esp: 'él/ella', eng: 'He/she',         },
+    firstPlural:{ esp: 'nosotros',eng: 'We'              },
   },
 
   tenses: {
@@ -23,16 +24,19 @@ var config = {
         first: 'o',
         secondInf: 'as',
         third: 'a',
+        firstPlural: 'amos',
       },
       past: {
         first: 'é',
         secondInf: 'aste',
         third: 'ó',
+        firstPlural: 'amos',
       },
       future: {
         first: 'é',
         secondInf: 'ás',
         third: 'á',
+        firstPlural: 'emos',
       },
     },
   },
