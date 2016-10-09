@@ -46,3 +46,13 @@ cases:
 - given: have first present
   question: I have
   answer: tengo
+
+- given: ask third past
+  question: He/she asked
+  answer: preguntó
+
+- given: respond third past
+  question: He/she responded
+  answer: respondió
+
+

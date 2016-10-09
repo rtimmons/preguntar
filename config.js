@@ -21,6 +21,7 @@ var config = {
 
     // reg er
     eat:      { esp: 'comer' },
+    respond:  { esp: 'responder' },
 
     // irreg past
     want: {
