@@ -3,7 +3,6 @@ if (typeof require === 'function') {
 }
 
 var config = {
-
   verbs: {
     // reg ar
     talk:  { esp: 'hablar',   },
@@ -29,7 +28,7 @@ var config = {
   },
 
   persons: {
-    first:      { esp: '',        eng: 'I',              },
+    first:      { esp: 'yo',      eng: 'I',              },
     secondInf:  { esp: 'tú',      eng: 'You <small>(inf)</small>', },
     third:      { esp: 'él/ella', eng: 'He/she',         },
     firstPlural:{ esp: 'nosotros',eng: 'We'              },
@@ -127,6 +126,8 @@ var config = {
 
   },
 };
+
+
 
 
 
