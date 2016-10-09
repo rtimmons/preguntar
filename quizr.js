@@ -1,8 +1,21 @@
 var config = {
 
   verbs: {
+    // reg ar
     talk:  { esp: 'hablar',   },
     study: { esp: 'estudiar', },
+    work:  { esp: 'trabajar', },
+    drink: { esp: 'tomar',    },
+    walk:  { esp: 'caminar'   },
+    bkfst: { esp: 'desayunar', eng: 'breakfast' },
+    lunch: { esp: 'almorzar', },
+    dinner:{ esp: 'cenar',    },
+    buy:   { esp: 'comprar',  },
+    prepare:  { esp: 'preparar', },
+    arrive:   { esp: 'llegar',    },
+    wash:     { esp: 'lavar',     },
+    ask:      { esp: 'preguntar', },
+    call:     { esp: 'llamar',    },
   },
 
   persons: {
