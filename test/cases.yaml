@@ -63,3 +63,6 @@ cases:
   question: I know'd
   answer: supe
 
+- given: go first present
+  question: I go
+  answer: voy
