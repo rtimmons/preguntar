@@ -1,0 +1,36 @@
+
+var dimensions = [
+  [
+    'I',
+    'You (inf)',
+    'He/she',
+    'We',
+    'You (plural)',
+    'They (plural)',
+  ],
+  [
+    '(present)',
+    '(past)',
+    'will',
+  ],
+  [
+    'talk',
+    'work',
+    'study',
+    'drink',
+    'walk',
+    'travel',
+  ]
+];
+
+$(() => {
+  $('#quizr').click(() => {
+    var ix = _.map(dimensions, d => rand(d));
+    var q = _.map(dimensions, d => {
+      var out = rand(d);
+      return out;
+    }).join(' ');
+    $('#quizr').html(q);
+  })
+  .click();
+});
