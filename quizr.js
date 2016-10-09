@@ -1,6 +1,7 @@
 if (typeof require === 'function') {
   var _ = require('underscore');
   var config = require('./config.js');
+  var rand = require('./util.js').rand;
 }
 
 var EXTRACT_ROOT = /^(.*?)(..)$/g;
@@ -67,18 +68,9 @@ function choose() {
   };
 }
 
-var rand = function(array) {
-  var r = Math.round(Math.random() * (array.length-1));
-  var out = array[r];
-  return out;
-};
-
 if (typeof module === 'object') {
   module.exports = {
     choose: choose,
-    rand: rand,
-    questionFor: questionFor,
-    answerFor: answerFor,
     questionAndAnswerFor: questionAndAnswerFor,
   };
 }
