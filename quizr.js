@@ -31,6 +31,15 @@ var config = {
 
 var EXTRACT_ROOT = /^(.*?)(..)$/g;
 
+function questionFor(verbKey, person, tense) {
+  var verb = config.verbs[verbKey];
+
+  var engVerb = verb.eng || verbKey;
+  var engPerson = config.persons[person].eng;
+
+  return engPerson + ' ' + engVerb;
+}
+
 function answerFor(verbKey, person, tense) {
   var verb = config.verbs[verbKey];
 
@@ -52,8 +61,9 @@ $(() => {
   var person = rand(_.keys(config.persons));
   var tense  = rand(_.keys(config.tenses));
 
-  var q = answerFor(verb,person,tense);
-  $('#quizr').html(q + '');
+  var q = questionFor(verb,person,tense);
+  var a = answerFor(verb,person,tense);
+  $('#quizr').html(q + '=> ' + a);
 });
 
 var rand = function(array) {
