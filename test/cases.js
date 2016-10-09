@@ -6,7 +6,7 @@ var yaml = require('js-yaml');
 var fs = require('fs');
 var _ = require('underscore');
 
-var quizr = require('../quizr.js');
+var quizr = require('../app/quizr.js');
 
 describe('conjugation',() => {
   var doc = yaml.safeLoad(fs.readFileSync('./test/cases.yaml', 'utf8'));
