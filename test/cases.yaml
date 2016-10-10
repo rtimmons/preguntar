@@ -66,3 +66,12 @@ cases:
 - given: go first present
   question: I go
   answer: voy
+
+- given: go secondInf past
+  question: You (inf) went
+  answer: fuiste
+
+- given: go thirdPlural future
+  question: They will go
+  answer: iran # TODO: is this right?
+
