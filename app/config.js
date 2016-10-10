@@ -6,6 +6,7 @@ var config = {
     work:  { esp: 'trabajar', },
     drink: { esp: 'tomar',    },
     walk:  { esp: 'caminar'   },
+    travel:{ esp: 'viajar'    },
     bkfst: { esp: 'desayunar', eng: 'breakfast' },
     lunch: { esp: 'almorzar', },
     dinner:{ esp: 'cenar',    },
@@ -17,10 +18,13 @@ var config = {
     call:     { esp: 'llamar',    },
 
     // reg ir
-    live:   { esp: 'vivir' },
+    live:   { esp: 'vivir'    },
+    decide: { esp: 'decidir'  },
+    write:  { esp: 'escribir' },
 
     // reg er
     eat:      { esp: 'comer' },
+    drink:    { esp: 'beber' },
     respond:  { esp: 'responder' },
 
     // irreg past
@@ -53,7 +57,31 @@ var config = {
         past:   'tuv',
       },
     },
+    // TODO: andar vs caminar?
+    // walk: {
+    //   esp: 'andar',
+    //   type: ['irregPast', 'regar'],
+    //   stems: {
+    //     past:   'anduv',
+    //   },
+    // },
+    able: {
+      esp: 'poder',
+      eng: {
+        present: 'can',
+        past: 'was/were able to',
+        future: 'will be able to',
+      },
+      type: ['irregFuture', 'irregPast', 'reger'],
+      stems: {
+        future: 'podr',
+        past:   'pud',
+      },
+    },
 
+    // TODO: hicer
+    // TODO: estar
+    // TODO: ser
 
     go: {
       esp: {
@@ -112,7 +140,6 @@ var config = {
         },
       }
     },
-
   },
 
   persons: {
