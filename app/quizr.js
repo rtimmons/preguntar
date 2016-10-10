@@ -9,12 +9,30 @@ var EXTRACT_ROOT = /^(.*?)(..)$/g;
 function questionAndAnswerFor(verbKey, person, tense) {
   var verb = config.verbs[verbKey];
 
-  var question =
-    config.persons[person].eng + ' ' +
-    ((verb.eng
+  // well this is confusing
+
+  // is there an override for the tense
+  var universalForTense = verb.eng
       && typeof(verb.eng) !== 'string'
-      && verb.eng[tense]
-      && verb.eng[tense][person]) || (config.tenses[tense].eng || (x => x))(verb.eng || verbKey));
+      && verb.eng[tense];
+  // ... and is there one for the person?
+  var forPersonAndTense = universalForTense 
+      && typeof(universalForTense) !== 'string'
+      && universalForTense[person];
+
+  var engBase = typeof(verb.eng) !== 'string' ? verbKey : verb.eng;
+  var conjugated = 
+      forPersonAndTense || 
+      universalForTense ||
+      (config.tenses[tense].eng || (x => x))(engBase);
+  
+  // console.log(`verb.eng = %j, universalForTense = %j, forPersonAndTense = %j, conjugated = %j`,
+  //   verb.eng, universalForTense, forPersonAndTense, conjugated
+  // );
+
+  var question =
+    config.persons[person].eng + ' ' + conjugated;
+    
 
   function computeAnswer() {
     var type = _.find(_.collect(

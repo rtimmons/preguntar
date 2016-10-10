@@ -35,6 +35,9 @@ var config = {
     know: {
       esp: 'saber',
       type: ['irregFuture', 'irregPast', 'reger'],
+      eng: {
+        past: 'knew',
+      },
       stems: {
         future: 'sabr',
         past:   'sup',
