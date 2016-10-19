@@ -24,6 +24,19 @@
      font-size: 2em;
      margin-top: 1em;
   }
+
+  #help {
+    position: fixed;
+    bottom: 0;
+
+    text-align: center;
+    align: 0 auto;
+    margin: 2em;
+    font-size: 0.75em;
+  }
+  #help em {
+    margin: 3em;
+  }
   </style>
   <script type="text/javascript" src="./jquery.js"></script>
   <script type="text/javascript" src="./underscore.js"></script>
@@ -48,6 +61,11 @@
 
 <div id="question"></div>
 <div id="answer"></div>
+<div id="help">
+    <em>(r) to clear config</em>
+    <em>(d) to add verb</em>
+    <em>(any other key) show answer / new question</em>
+</div>
 
 </body>
 </html>

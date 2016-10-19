@@ -13,9 +13,6 @@ class App {
   generateChoice() {
     var choice = this.quizr.randomChoice();
     var qa = this.quizr.questionAndAnswerFor(choice.verb, choice.person, choice.tense);
-    if (!qa) {
-      return;
-    }
     this.qa = qa;
 
     this.$q.html(this.qa.question);
@@ -29,9 +26,19 @@ class App {
   }
 
   clearConfig() {
+    this.quizr.clearConfig();
+    this.qa = null;
+
+    this.$q.html('');
+    this.$a.html('');
   }
 
   addVerb() {
+    var esp = window.prompt('¿Infinitivo?')
+    var eng = window.prompt('¿Significa \'to ...\' qué en Inglés?');
+    this.quizr.setVerb(eng, {
+      esp: esp,
+    });
   }
 
   // keycode unused now - but better keyboard nav would be nice

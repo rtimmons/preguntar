@@ -17,6 +17,14 @@ class Quizr {
     this.config = config;
   }
 
+  clearConfig() {
+    this.config.verbs = {};
+  }
+
+  setVerb(k, v) {
+    this.config.verbs[k] = v;
+  }
+
   questionAndAnswerFor(verbKey, person, tense) {
     var verb = this.config.verbs[verbKey];
     if (!verb) {
