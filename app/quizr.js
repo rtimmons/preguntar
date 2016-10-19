@@ -12,6 +12,10 @@ class Quizr {
     this.config = config;
   }
 
+  setConfig(config) {
+    this.config = config;
+  }
+
   questionAndAnswerFor(verbKey, person, tense) {
     var verb = this.config.verbs[verbKey];
 

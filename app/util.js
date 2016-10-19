@@ -4,8 +4,13 @@ var rand = function(array) {
   return out;
 };
 
+function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 if (typeof module === 'object') {
   module.exports = {
     rand: rand,
+    deepClone: deepClone,
   };
 }

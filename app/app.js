@@ -25,9 +25,24 @@ class App {
     this.state = ANSWERED;
   }
 
+  clearConfig() {
+  }
+
+  addVerb() {
+  }
+
   // keycode unused now - but better keyboard nav would be nice
   onKeyUp(keycode) {
     console.log('keycode = %j', keycode);
+    if (keycode == 82 /*r*/) {
+      this.clearConfig();
+      return;
+    }
+    if (keycode == 68 /*d*/) {
+      this.addVerb();
+      return;
+    }
+
     if (this.state === UNANSWERED) {
       this.answer();
       return;
