@@ -1,5 +1,8 @@
 var config = {
   verbs: {
+  },
+
+  built_in_verbs: {
     // reg ar
     talk:  { esp: 'hablar',   },
     study: { esp: 'estudiar', },

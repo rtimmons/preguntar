@@ -13,6 +13,9 @@ class App {
   generateChoice() {
     var choice = this.quizr.randomChoice();
     var qa = this.quizr.questionAndAnswerFor(choice.verb, choice.person, choice.tense);
+    if (!qa) {
+      return;
+    }
     this.qa = qa;
 
     this.$q.html(this.qa.question);

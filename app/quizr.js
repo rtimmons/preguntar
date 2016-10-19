@@ -10,6 +10,7 @@ class Quizr {
 
   constructor(config) {
     this.config = config;
+    this.config.verbs = this.config.built_in_verbs;
   }
 
   setConfig(config) {
@@ -18,6 +19,10 @@ class Quizr {
 
   questionAndAnswerFor(verbKey, person, tense) {
     var verb = this.config.verbs[verbKey];
+    if (!verb) {
+      return;
+    }
+
 
     // well this is confusing
 
