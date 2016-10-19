@@ -6,7 +6,8 @@ var yaml = require('js-yaml');
 var fs = require('fs');
 var _ = require('underscore');
 
-var quizr = require('../app/quizr.js');
+var config = require('../app/config.js');
+var Quizr = require('../app/quizr.js');
 
 var clean = function(ob) {
   var out = {};
@@ -23,8 +24,9 @@ describe('conjugation',() => {
 
   (only ? [only] : doc.cases).forEach((c) => {
     it(c.given + ': ' + c.question + ' => ' + c.answer, () => {
+      var quizr = new Quizr(config);
       var given = c.given.split(/\s+/);
-      var actual = clean(quizr.questionAndAnswerFor.apply(null, given));
+      var actual = clean(quizr.questionAndAnswerFor.apply(quizr, given));
       expect(actual).to.deep.equal({
         question: c.question,
         answer:   c.answer,

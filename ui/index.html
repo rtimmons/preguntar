@@ -27,49 +27,16 @@
   </style>
   <script type="text/javascript" src="./jquery.js"></script>
   <script type="text/javascript" src="./underscore.js"></script>
-  <script type="text/javascript" src="../app/util.js"></script>
+
+  <script type="text/javascript" src="../app/app.js"></script>
   <script type="text/javascript" src="../app/quizr.js"></script>
+  <script type="text/javascript" src="../app/util.js"></script>
   <script type="text/javascript" src="../app/config.js"></script>
   <script type="text/javascript">
 
-  const UNANSWERED = 1;
-  const ANSWERED   = 2;
-
-  class App {
-    constructor($q, $a) {
-      this.$q = $q;
-      this.$a = $a;
-
-      this.generateChoice();
-    }
-
-    generateChoice() {
-      var choice = randomChoice();
-      var qa = questionAndAnswerFor(choice.verb, choice.person, choice.tense);
-      this.qa = qa;
-
-      this.$q.html(this.qa.question);
-      this.$a.html('');
-      this.state = UNANSWERED;
-    }
-
-    answer() {
-      this.$a.html(this.qa.answer);
-      this.state = ANSWERED;
-    }
-
-    // keycode unused now - but better keyboard nav would be nice
-    onKeyUp(keycode) {
-      if (this.state === UNANSWERED) {
-        this.answer();
-        return;
-      }
-      this.generateChoice();
-    }
-  }
-
   $(() => {
-      var app = new App($('#question'), $('#answer'));
+      var quizr = new Quizr(config);
+      var app = new App(quizr, $('#question'), $('#answer'));
       $('body').on('keyup',(e) => {
           app.onKeyUp(e.which);
           return true;
