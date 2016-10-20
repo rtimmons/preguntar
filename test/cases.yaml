@@ -83,3 +83,8 @@ cases:
   question: I was/were able to
   answer: pude
 
+- given: able thirdPlural past
+  question: They was/were able to
+  # TODO: indicate this is preterite
+  answer: pudieron
+

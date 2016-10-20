@@ -1,4 +1,6 @@
 var config = {
+  // TODO: add preterite vs imperfect subjunctive
+
   verbs: {
   },
 
