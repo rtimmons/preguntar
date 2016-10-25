@@ -45,6 +45,9 @@ class App {
   // keycode unused now - but better keyboard nav would be nice
   onKeyUp(keycode) {
     console.log('keycode = %j', keycode);
+    if ( keycode == 91 /*cmd*/ || keycode == 16 /*shift*/ ) { 
+      return;
+    }
     if (keycode == 82 /*r*/) {
       this.clearConfig();
       return;
