@@ -39,6 +39,7 @@ class App {
     this.quizr.setVerb(eng, {
       esp: esp,
     });
+    this.generateChoice();
   }
 
   // keycode unused now - but better keyboard nav would be nice
