@@ -51,6 +51,10 @@ cases:
   question: He/she ask'd
   answer: preguntó
 
+- given: ask thirdPlural past
+  question: They ask'd
+  answer: preguntaron
+
 - given: respond third past
   question: He/she respond'd
   answer: respondió
@@ -82,6 +86,18 @@ cases:
 - given: able first past
   question: I was/were able to
   answer: pude
+
+- given: want secondForm present
+  question: You (pl) want
+  answer: queréis
+
+- given: respond thirdPlural past
+  question: They respond'd
+  answer: respondieron
+
+- given: bkfst thirdPlural past
+  question: They breakfast'd
+  answer: desayunaron
 
 - given: able thirdPlural past
   question: They was/were able to
