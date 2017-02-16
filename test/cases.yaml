@@ -81,7 +81,20 @@ cases:
 
 - given: able first present
   question: I can
-  answer: podo
+  answer: puedo
+
+# TODO - this fails for now
+# - given: able firstPlural present
+#   question: We can
+#   answer: podemos
+
+- given: able secondInf present
+  question: You (inf) can
+  answer: puedes
+
+- given: able secondInf present
+  question: You (inf) can
+  answer: puedes
 
 - given: able first past
   question: I was/were able to

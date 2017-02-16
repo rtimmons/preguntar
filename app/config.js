@@ -79,6 +79,7 @@ var config = {
       },
       type: ['irregFuture', 'irregPast', 'reger'],
       stems: {
+        present:'pued',
         future: 'podr',
         past:   'pud',
       },
