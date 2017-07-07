@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Colores</title>
+  <style type="text/css">
+      body {
+          font-family: 'Helvetica';
+      }
+      #grid div {
+          display: inline-block;
+          width: 5em;
+          text-align: center;
+          padding: 1em;
+      }
+  </style>
+</head>
+<body>
+
+<div style="float:right;font-size:0.5em">Hecho con ❤️ and 🌮 by rtimmons</div>
+
+<div>Inspirado por <a href="http://c0ffee.surge.sh/">esto</a>.</div>
+<br>
+
+<div id="grid">
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script>
+    // '^[abcdefilostwx]{6}$'
+    var words = [
+    'abades', 'abasto', 'abatas', 'abates', 'abdica', 'abdico', 'abetal', 'abetos', 'abisal', 'abobas',
+    'abobes', 'abocas', 'abolla', 'abolle', 'abollo', 'acabas', 'acabes', 'acacia', 'acaece', 'acalla',
+    'acalle', 'acallo', 'acceda', 'accede', 'accedo', 'acceso', 'acebos', 'acedas', 'acedes', 'acedos',
+    'aceite', 'acodas', 'acodes', 'acotas', 'acotes', 'adatas', 'adates', 'adelfa', 'adicta', 'adicto',
+    'adobas', 'adobes', 'adobos', 'adosas', 'adoses', 'afable', 'afecta', 'afecte', 'afecto', 'afeita',
+    'afeite', 'afeito', 'afilas', 'afiles', 'afilia', 'afilie', 'afilio', 'aflato', 'aislas', 'aisles',
+    'alabas', 'alabes', 'aladas', 'alados', 'alcoba', 'aldaba', 'aldeas', 'aletas', 'aleteo', 'aliaba',
+    'aliada', 'aliado', 'aliase', 'alioli', 'alisas', 'alises', 'alista', 'aliste', 'alisto', 'asabas',
+    'asadas', 'asados', 'asalta', 'asalte', 'asalto', 'asases', 'asaste', 'asceta', 'ascosa', 'ascoso',
+    'asidas', 'asidos', 'asiese', 'asilos', 'asista', 'asiste', 'asisto', 'astils', 'atabas', 'atacas',
+    'atadas', 'atados', 'atasco', 'atases', 'ataste', 'atleta', 'axiles', 'babosa', 'baboso', 'bacilo',
+    'bailas', 'bailes', 'balada', 'baldes', 'balota', 'balsas', 'basaba', 'basada', 'basado', 'basase',
+    'bascas', 'bastas', 'bastes', 'bastos', 'batata', 'bateas', 'bateos', 'batida', 'batido', 'beatas',
+    'beatos', 'bebida', 'bebido', 'becada', 'befaba', 'befada', 'befado', 'befase', 'beldad', 'belfas',
+    'belfos', 'bellas', 'bellos', 'beodas', 'beodos', 'besaba', 'besada', 'besado', 'besico', 'besito',
+    'bestia', 'biblia', 'bicoca', 'biftec', 'bilbao', 'biseca', 'biseco', 'bisela', 'bisele', 'biselo',
+    'bistec', 'bobote', 'bocado', 'boceto', 'boicot', 'bolada', 'boleta', 'boleto', 'bollos', 'bolsas',
+    'bolsos', 'botaba', 'botada', 'botado', 'botase', 'botica', 'boxeas', 'boxees', 'cabida', 'cabido',
+    'cabios', 'cables', 'cacica', 'cactos', 'cadete', 'caiste', 'calada', 'calado', 'calcas', 'calces',
+    'calcio', 'calcos', 'caldas', 'caldea', 'caldee', 'caldos', 'caleta', 'califa', 'callas', 'calles',
+    'callos', 'casaba', 'casada', 'casado', 'casase', 'cascos', 'caseta', 'castas', 'castos', 'cataba',
+    'catada', 'catado', 'catase', 'cateas', 'catees', 'cebada', 'ceceas', 'cecees', 'ceceos', 'cedida',
+    'cedido', 'celaba', 'celada', 'celado', 'celase', 'celdas', 'celosa', 'celoso', 'celtas', 'cesaba',
+    'cesada', 'cesado', 'cesase', 'cestas', 'cestos', 'ciclos', 'cielos', 'citaba', 'citada', 'citado',
+    'citase', 'clases', 'cloaca', 'cocida', 'cocido', 'coctel', 'codeos', 'colaba', 'colada', 'colado',
+    'colase', 'coleta', 'coloca', 'coloco', 'coloso', 'cosaca', 'cosaco', 'cosida', 'cosido', 'cosita',
+    'costal', 'costas', 'costes', 'costos', 'cotice', 'dabais', 'dalias', 'dalles', 'databa', 'datada',
+    'datado', 'datase', 'debata', 'debate', 'debato', 'debida', 'debido', 'decaes', 'decida', 'decide',
+    'decido', 'dedada', 'dedeos', 'dedica', 'dedico', 'deidad', 'deista', 'delito', 'deltas', 'desase',
+    'desata', 'desate', 'desato', 'deseas', 'deseca', 'deseco', 'desees', 'deseos', 'desola', 'desole',
+    'desolo', 'detall', 'diablo', 'dictas', 'dictes', 'dieces', 'dieses', 'dietas', 'dilata', 'dilate',
+    'dilato', 'discos', 'disida', 'diside', 'disido', 'distal', 'doblas', 'dobles', 'doctas', 'doctos',
+    'dolida', 'dolido', 'dolosa', 'doloso', 'dotada', 'dotado', 'edades', 'edicto', 'ediles', 'editas',
+    'edites', 'efecto', 'electa', 'electo', 'esboce', 'escala', 'escalo', 'escasa', 'escaso', 'escoba',
+    'escobe', 'escobo', 'estaba', 'estada', 'estado', 'estafa', 'estafe', 'estafo', 'estilo', 'estofa',
+    'estofe', 'estofo', 'exacta', 'exacto', 'exalta', 'exalte', 'exalto', 'exceda', 'excede', 'excedo',
+    'exceso', 'excita', 'excite', 'excito', 'exilio', 'exista', 'existe', 'existo', 'fabada', 'faceta',
+    'facial', 'faldas', 'fallas', 'falles', 'fallos', 'falsas', 'falsea', 'falsee', 'falseo', 'falsos',
+    'faltas', 'faltes', 'faltos', 'fastas', 'fastos', 'fiabas', 'fiable', 'fiadas', 'fiados', 'fiasco',
+    'fiases', 'fiaste', 'fideos', 'fieles', 'fiesta', 'filete', 'filial', 'fiscal', 'flacas', 'flacos',
+    'fletas', 'fletes', 'flotas', 'flotes', 'folios', 'foscas', 'foscos', 'ideaba', 'ideada', 'ideado',
+    'idease', 'idilia', 'idilio', 'idiota', 'idolas', 'idolos', 'ilesas', 'ilesos', 'isabel', 'italia',
+    'labial', 'labios', 'lacias', 'lacios', 'laical', 'laicas', 'laicos', 'lascas', 'latida', 'latido',
+    'latosa', 'latoso', 'laxaba', 'laxada', 'laxado', 'laxase', 'leales', 'leiste', 'lesbia', 'lesbio',
+    'liabas', 'liadas', 'liados', 'liases', 'liaste', 'libelo', 'libido', 'liceos', 'licita', 'licite',
+    'licito', 'lidias', 'liosas', 'liosos', 'lisboa', 'listas', 'listos', 'llosas', 'loable', 'lodosa',
+    'lodoso', 'obelos', 'obesas', 'obesos', 'obsesa', 'obseso', 'obstas', 'obstes', 'ocasos', 'ociosa',
+    'ocioso', 'odessa', 'odiaba', 'odiada', 'odiado', 'odiase', 'odiosa', 'odioso', 'odisea', 'oficio',
+    'oibles', 'oleica', 'oleico', 'oleosa', 'oleoso', 'olidas', 'olidos', 'oliese', 'oliste', 'osabas',
+    'osadas', 'osados', 'osases', 'osaste', 'oscila', 'oscile', 'oscilo', 'ososas', 'ososos', 'sabias',
+    'sabida', 'sabido', 'sabios', 'sacaba', 'sacada', 'sacado', 'sacase', 'saetas', 'salada', 'salado',
+    'saldas', 'saldes', 'saldos', 'salida', 'salido', 'salsas', 'saltas', 'saltea', 'saltee', 'salteo',
+    'saltes', 'saltos', 'sebosa', 'seboso', 'secaba', 'secada', 'secado', 'secase', 'sectas', 'sedosa',
+    'sedoso', 'sellas', 'selles', 'sellos', 'sestea', 'sestee', 'sesteo', 'sextas', 'sextos', 'siesta',
+    'sietes', 'silabo', 'silbas', 'silbes', 'silbos', 'sillas', 'sitios', 'sobaco', 'social', 'socias',
+    'socios', 'sofoca', 'sofoco', 'solaba', 'solada', 'solado', 'solase', 'soleas', 'solees', 'solfeo',
+    'tabaco', 'tablas', 'tacita', 'tacito', 'tactos', 'talaba', 'talada', 'talado', 'talase', 'tallas',
+    'talles', 'tallos', 'tasaba', 'tasada', 'tasado', 'tasase', 'tascas', 'tastos', 'teclas', 'tecleo',
+    'tedios', 'testas', 'testes', 'textil', 'textos', 'tibias', 'tibios', 'tiesas', 'tiesos', 'tiesta',
+    'tiesto', 'tildas', 'tildes', 'titila', 'titile', 'titilo', 'toalla', 'tocaba', 'tocada', 'tocado',
+    'tocase', 'tocata', 'toldos', 'toscas', 'toscos', 'tosida', 'tosido',
+    ];
+    // var words = ['toalla'];
+
+    var grid = $('#grid');
+    words.forEach(w => {
+        var $box = $('<div>');
+        var c = w.replace(/l/g, '1').replace(/i/g,'1').replace(/s/g,'5').replace(/o/g,'0').replace(/t/g,'7');
+        $box.html(w);
+        $box.css({backgroundColor: '#' + c});
+        $box.hover(function(){
+            $box.html('<tt>'+c+'</tt>');
+        },function(){
+            $box.html(w);
+        })
+        grid.append($box);
+    });
+</script>
+
+</body>
+</html>
